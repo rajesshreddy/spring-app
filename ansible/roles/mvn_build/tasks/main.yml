@@ -10,7 +10,7 @@
 
 - name: Copy app source
   copy:
-    src: "/ansible/../app/"
+    src: "{{ app_src }}/"
     dest: /tmp/build/
 
 - name: Build WAR
