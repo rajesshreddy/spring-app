@@ -1,2 +1,3 @@
 ---
 # vars file for tomcat_deploy
+target_env: dev
