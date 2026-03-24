@@ -17,6 +17,7 @@
   command: mvn clean package
   args:
     chdir: /tmp/build/
+    
 - name: List the build file
   command: ls -l /tmp/build/target/
   
