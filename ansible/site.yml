@@ -1,10 +1,11 @@
 - hosts: build
+  gather_facts: no
   roles:
     - mvn_build
 
-# - hosts: "{{ target_env }}"
-#   vars_files:
-#     - "group_vars/{{ target_env }}.yml"
+- hosts: "{{ target_env }}"
+  vars_files:
+    - "group_vars/{{ target_env }}.yml"
 
-#   roles:
-#     - tomcat_deploy
+  roles:
+    - tomcat_deploy
