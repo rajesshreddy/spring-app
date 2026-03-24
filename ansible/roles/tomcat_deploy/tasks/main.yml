@@ -1,12 +1,12 @@
 - name: Install Tomcat
   apt:
-    name: tomcat9
+    name: tomcat10
     state: present
   become: true
 
 - name: Stop Tomcat
   service:
-    name: tomcat9
+    name: tomcat10
     state: stopped
   become: true
 
@@ -50,6 +50,6 @@
 
 - name: Start Tomcat
   service:
-    name: tomcat9
+    name: tomcat10
     state: started
   become: true
