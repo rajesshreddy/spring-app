@@ -1,0 +1,5 @@
+@Library('my-shared-lib') _
+
+deployPipeline(
+    repo: 'https://github.com/your-repo/devops-project.git'
+)

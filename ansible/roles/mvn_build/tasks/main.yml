@@ -1,0 +1,25 @@
+- name: Create build directory
+  file:
+    path: /tmp/build
+    state: directory
+
+- name: Create artifact directory
+  file:
+    path: "{{ artifact_dir }}"
+    state: directory
+
+- name: Copy app source
+  copy:
+    src: "/ansible/../app/"
+    dest: /tmp/build/
+
+- name: Build WAR
+  command: mvn clean package
+  args:
+    chdir: /tmp/build/
+
+- name: Store WAR locally
+  copy:
+    src: "/tmp/build/target/{{ app_name }}.war"
+    dest: "{{ artifact_dir }}/{{ app_name }}.war"
+    remote_src: yes

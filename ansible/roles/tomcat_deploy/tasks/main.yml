@@ -1,0 +1,55 @@
+- name: Install Tomcat
+  apt:
+    name: tomcat9
+    state: present
+  become: true
+
+- name: Stop Tomcat
+  service:
+    name: tomcat9
+    state: stopped
+  become: true
+
+- name: Copy WAR
+  copy:
+    src: "{{ artifact_dir }}/{{ app_name }}.war"
+    dest: "/tmp/{{ app_name }}.war"
+
+- name: Deploy WAR
+  copy:
+    src: "/tmp/{{ app_name }}.war"
+    dest: "{{ tomcat_webapps }}/{{ app_name }}.war"
+    remote_src: yes
+  become: true
+
+# Jinja2 Templates
+
+- name: Create ROOT directory
+  file:
+    path: "{{ tomcat_webapps }}/ROOT"
+    state: directory
+  become: true
+
+- name: Deploy index.html
+  template:
+    src: index.html.j2
+    dest: "{{ tomcat_webapps }}/ROOT/index.html"
+  become: true
+
+- name: Deploy config.js
+  template:
+    src: config.js.j2
+    dest: "{{ tomcat_webapps }}/ROOT/config.js"
+  become: true
+
+- name: Deploy CSS
+  template:
+    src: app.css.j2
+    dest: "{{ tomcat_webapps }}/ROOT/app.css"
+  become: true
+
+- name: Start Tomcat
+  service:
+    name: tomcat9
+    state: started
+  become: true
