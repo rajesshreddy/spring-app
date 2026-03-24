@@ -1,5 +1,5 @@
 @Library('my-shared-lib') _
 
 deployPipeline(
-    repo: 'https://github.com/your-repo/devops-project.git'
+    repo: 'https://github.com/rajesshreddy/spring-app.git'
 )
