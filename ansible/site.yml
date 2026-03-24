@@ -3,9 +3,9 @@
   roles:
     - mvn_build
 
-- hosts: "{{ target_env }}"
+- hosts: "{{ target_env | default('dev') }}"
   vars_files:
-    - "group_vars/{{ target_env }}.yml"
+    - "group_vars/{{ target_env | default('dev') }}.yml"
 
   roles:
     - tomcat_deploy
