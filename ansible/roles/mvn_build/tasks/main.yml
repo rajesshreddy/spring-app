@@ -22,6 +22,6 @@
   
 - name: Store WAR locally
   copy:
-    src: "/tmp/build/target/{{ app_name }}.war"
+    src: "/tmp/build/target/{{ app_name }}-v0.1.war"
     dest: "{{ artifact_dir }}/{{ app_name }}.war"
     remote_src: yes
