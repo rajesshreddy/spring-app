@@ -1,6 +1,7 @@
 app_name: myapp
 artifact_dir: /tmp/artifacts
 tomcat_webapps: /var/lib/tomcat9/webapps
+target_env: dev
 
 app_env: dev
 backend_url: "http://dev-api.local"
